@@ -9,8 +9,10 @@ def index():
     version = flask.request.args.get("urllib_version")
     url = flask.request.args.get("url")
     return fetch_website(version, url)
+
    
 CONFIG = {"API_KEY": "771df488714111d39138eb60df756e6b"}
+
 
 class Person():
     def __init__(self, name):
@@ -21,15 +23,10 @@ def print_nametag(format_string, person):
     print(format_string.format(person=person))
 
 
-def fetch_website(urllib_version, url):
+def fetch_website(urllib_version):
     # Import the requested version (2 or 3) of urllib
     exec(f"import urllib{urllib_version} as urllib", globals())
     # Fetch and print the requested URL
- 
-    try: 
-        http = urllib.PoolManager()
-    except:
-        print('Exception')
 
 
 def load_yaml(filename):
@@ -41,6 +38,7 @@ def authenticate(password):
     # Assert that the password is correct
     assert password == "Iloveyou", "Invalid password!"
     print("Successfully authenticated!")
+
 
 if __name__ == '__main__':
     print("Vulnerabilities:")
